@@ -17,7 +17,7 @@ export default function onePage(){
     const [index, SetIndex]= useState(null)  
 
 
-   const url_database=process.env.URL
+   const url_database=process.env.NEXT_PUBLIC_URL
 
 
   function actualizar(index) { 
@@ -46,7 +46,7 @@ export default function onePage(){
       console.log("NUEVO:", nuevoValor)
    
 
-    const response= await fetch(`url_database/usuarios/${id}`,{ 
+    const response= await fetch(`${url_database}/usuarios/${id}`,{ 
       method:"PATCH",
       headers:{
         "content-Type":"application/json"
