@@ -13,7 +13,7 @@ const FormUpdate = ({id}) => {
         fechaIngreso:""
     })  
 
-     const url_database=process.env.URL
+     const url_database=process.env.NEXT_PUBLIC_URL
 
     async function actualizarPatch(campo,valor) { 
 

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 
 const FormDelete = ({id}) => { 
 
-   const url_database=process.env.URL
+   const url_database=process.env.NEXT_PUBLIC_URL
 
 
 

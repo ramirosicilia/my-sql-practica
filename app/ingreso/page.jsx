@@ -7,7 +7,7 @@ import { useReducer} from "react"
 
 export default function Formulario(){ 
 
-     const url_database=process.env.URL 
+     const url_database=process.env.NEXT_PUBLIC_URL
      
     const objecto= {
         nombre:"",
