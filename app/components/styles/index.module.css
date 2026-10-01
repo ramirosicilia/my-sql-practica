@@ -1,0 +1,36 @@
+
+
+.titulo{
+    color: brown;
+} 
+
+.table{
+    margin-top: 4rem;
+    width: 100%;
+    padding: 1rem;
+    border-collapse:collapse;
+    text-align: center;
+    background-color: #3939e0;
+
+}
+
+.th{
+    border: 1px solid #000; 
+    background-color: #8f8fdb;
+    padding: 1.2rem;
+
+}
+
+
+
+.td{
+    border: 1px solid #000;
+    padding: 1.3rem 1rem;
+
+
+}
+
+.input{
+    width: 100%;
+    padding: 1rem;
+}
