@@ -14,7 +14,7 @@ const FormUpdate = ({id}) => {
         fechaIngreso:""
     })   
 
-       const {SetUser}= useFetch()
+       const {user,SetUser}= useFetch()
 
      const url_database=process.env.NEXT_PUBLIC_URL
 
