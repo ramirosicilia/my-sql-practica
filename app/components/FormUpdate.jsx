@@ -14,7 +14,7 @@ const FormUpdate = ({id}) => {
         fechaIngreso:""
     })   
 
-       const [ SetUser]= useFetch()
+       const {SetUser}= useFetch()
 
      const url_database=process.env.NEXT_PUBLIC_URL
 
@@ -72,7 +72,7 @@ const FormUpdate = ({id}) => {
           const data=await response.json()  
 
           if(data==="usuario actualizado"){
-            
+
              SetUser(prev=>prev.map(us=>us.id===id? form: us))
 
              return data
