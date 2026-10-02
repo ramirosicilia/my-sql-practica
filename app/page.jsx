@@ -1,20 +1,23 @@
 "use client"
 
 
-import { useEffect, useState } from "react"
 import Link from "next/link"
 import FormUpdate from "@/app/components/FormUpdate"
 import FormDelete from "@/app/components/FormDelete"
 import style from "../app/components/styles/index.module.css"
+import {useFetch} from "@/app/components/hook/useFetch.js"
+
 
 
 export default function onePage(){
 
 
-  const [ user ,SetUser] = useState([])
+
 
   const [actualizacionUser, SetActualizaciones]= useState("")  
     const [index, SetIndex]= useState(null)  
+
+    const {user,SetUser}= useFetch()
 
 
    const url_database=process.env.NEXT_PUBLIC_URL
@@ -69,22 +72,7 @@ export default function onePage(){
 
 
 
-  useEffect(()=>{
-
-
-    async function peticion(){
-
-      const reponse= await fetch(`${url_database}/usuarios`) 
-      const data= await reponse.json() 
-
-      SetUser(data)
-
-
-    }
-
-    peticion()
-    
-  },[])
+  
 
 
   return(
