@@ -28,7 +28,9 @@ export  async function PUT(request,{params}){
             const {nombre,usuario,email,contrasena,fechaIngreso} =body 
     
        const [userUpdate] = await connection.query(`update usuarios Set nombre=?, usuario=?, email=?,contrasena=?,fechaIngreso=? where id=?`,[nombre,usuario,email,contrasena,fechaIngreso,id]) 
-       console.log(userUpdate)
+       console.log(userUpdate) 
+
+       await connection.end()
        return NextResponse.json("usuario actualizado")
 
 
@@ -94,6 +96,7 @@ export async function PATCH(request, { params }) {
         const [patchUser]= await connection.query(`update usuarios set ${campo}=? where id=?`,[valor,id])
 
         console.log(patchUser)
+        await connection.end()
 
         return NextResponse.json("cambio realizado")
 
@@ -107,7 +110,7 @@ export async function PATCH(request, { params }) {
         console.log(userHabilitacion)
 
 
-
+      await connection.end()
     }
 
     
