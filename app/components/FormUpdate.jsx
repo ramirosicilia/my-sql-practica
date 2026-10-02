@@ -42,12 +42,18 @@ const FormUpdate = ({id}) => {
 
          const data= await response.json()
 
-       if(data==="cambio realizado"){
+   
         
 
         SetUser(prev=>prev.map(us=>us.id===id?{...us,[campo]:valor} : us))
 
-       }
+          SetForm({
+        nombre:"",
+        usuario:"",
+        email:"",
+        contrasena:"",
+        fechaIngreso:""
+    })
 
       
  
@@ -71,13 +77,23 @@ const FormUpdate = ({id}) => {
 
           const data=await response.json()  
 
-          if(data==="usuario actualizado"){
+        
 
-             SetUser(prev=>prev.map(us=>us.id===id? form: us))
+             SetUser(prev=>prev.map(us=>us.id===id? form: us)) 
+             
+          SetForm({
+             nombre:"",
+             usuario:"",
+             email:"",
+             contrasena:"",
+             fechaIngreso:""
+           })
+
+      
 
              return data
 
-          }
+          
 
            
         
