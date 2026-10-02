@@ -2,6 +2,7 @@
 "use client" 
 
  import { useState } from "react"
+ import { useFetch } from "./hook/useFetch.js"
 
 const FormUpdate = ({id}) => {
 
@@ -11,7 +12,9 @@ const FormUpdate = ({id}) => {
         email:"",
         contrasena:"",
         fechaIngreso:""
-    })  
+    })   
+
+       const [ SetUser]= useFetch()
 
      const url_database=process.env.NEXT_PUBLIC_URL
 
@@ -35,7 +38,16 @@ const FormUpdate = ({id}) => {
           campo:campo,
           valor:valor
         })
-      })
+      }) 
+
+         const data= await response.json()
+
+       if(data==="cambio realizado"){
+        
+
+        SetUser(prev=>prev.map(us=>us.id===id?{...us,[campo]:valor} : us))
+
+       }
 
       
  
@@ -57,9 +69,17 @@ const FormUpdate = ({id}) => {
             body:JSON.stringify(form)
         })
 
-          const data=await response.json()
+          const data=await response.json()  
 
-        return data
+          if(data==="usuario actualizado"){
+            
+             SetUser(prev=>prev.map(us=>us.id===id? form: us))
+
+             return data
+
+          }
+
+           
         
      }
 

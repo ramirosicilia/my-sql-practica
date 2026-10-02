@@ -95,6 +95,8 @@ export async function PATCH(request, { params }) {
 
         console.log(patchUser)
 
+        return NextResponse.json("cambio realizado")
+
     } 
 
     else if(tipo==="check"){ 
