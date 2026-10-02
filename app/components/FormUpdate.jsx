@@ -2,9 +2,9 @@
 "use client" 
 
  import { useState } from "react"
- import { useFetch } from "./hook/useFetch.js"
 
-const FormUpdate = ({id}) => {
+
+const FormUpdate = ({id,SetUser}) => {
 
     const [form , SetForm]= useState({
         nombre:"",
@@ -14,8 +14,7 @@ const FormUpdate = ({id}) => {
         fechaIngreso:""
     })   
 
-       const {user,SetUser}= useFetch()
-
+  
      const url_database=process.env.NEXT_PUBLIC_URL
 
     async function actualizarPatch(campo,valor) { 

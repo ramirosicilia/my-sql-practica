@@ -132,7 +132,7 @@ export default function onePage(){
 
       { 
 
-      actualizacionUser==="update"? <FormUpdate id={index}/>:actualizacionUser==="delete"? <FormDelete id={index}/>:null
+      actualizacionUser==="update"? <FormUpdate id={index} SetUser={SetUser}/>:actualizacionUser==="delete"? <FormDelete id={index,SetUser}/>:null
         
       }
   
