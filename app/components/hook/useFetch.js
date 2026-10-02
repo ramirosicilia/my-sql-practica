@@ -5,7 +5,7 @@ import {peticionUsuario}from "../../data/peticion.js"
 
 export function useFetch(){
 
-    const [ user, SetUser] = ([]) 
+    const [ user, SetUser] =useState ([]) 
 
 
     useEffect(()=>{ 

@@ -79,7 +79,7 @@ const FormUpdate = ({id}) => {
 
         
 
-             SetUser(prev=>prev.map(us=>us.id===id? form: us)) 
+             SetUser(prev=>prev.map(us=>us.id===id? {...prev,...form}: us)) 
              
           SetForm({
              nombre:"",
