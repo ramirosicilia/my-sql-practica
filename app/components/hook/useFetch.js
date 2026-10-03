@@ -1,6 +1,6 @@
 
 import { useState,useEffect } from "react";
-import {peticionUsuario}from "../../data/peticion.js"
+import {peticionUsuarios}from "../../data/peticion.js"
 
 
 export function useFetch(){
@@ -12,7 +12,7 @@ export function useFetch(){
 
       async  function recibir(){ 
 
-        const data= await peticionUsuario() 
+        const data= await peticionUsuarios() 
 
         SetUser(data)
 
