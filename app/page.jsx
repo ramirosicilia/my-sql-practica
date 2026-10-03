@@ -99,16 +99,18 @@ export default function onePage(){
 
         </thead>
 
+         <tbody > 
+
         {
            
 
-
+   
 
     user.map((u,i)=>(  
 
-      <tbody key={i}> 
+    
 
-     <tr className={style.tr}>
+     <tr key={i} className={style.tr}>
       <td> <input type="checkbox" checked={u.habilitado}  onChange={()=>peticionInhabiliar(u.id,u.habilitado)} className={style.input}/></td>
         <td className={style.td}>{u.nombre}</td>
          <td className={style.td}>{u.usuario}</td>
@@ -121,18 +123,24 @@ export default function onePage(){
       </tr>
     
 
-      </tbody>
+   
 
    
-    ))
+    ))  
+
    
-        }
+     
+        }  
+
+           </tbody>
+
+         
       </table>
 
 
       { 
 
-      actualizacionUser==="update"? <FormUpdate id={index} SetUser={SetUser}/>:actualizacionUser==="delete"? <FormDelete id={index,SetUser}/>:null
+      actualizacionUser==="update"? <FormUpdate id={index} SetUser={SetUser}/>:actualizacionUser==="delete"? <FormDelete id={index} SetUser={SetUser}/>:null
         
       }
   
