@@ -13,8 +13,19 @@ export function useFetch() {
   }, []);
 
   useEffect(() => {
-    cargarUsuarios();
-  }, [cargarUsuarios]);
+    let activo = true;
+
+    async function recibir() {
+      const data = await peticionUsuarios();
+      if (activo) SetUser(data);
+    }
+
+    recibir();
+
+    return () => {
+      activo = false;
+    };
+  }, []);
 
   return { user, SetUser, cargarUsuarios };
 }
