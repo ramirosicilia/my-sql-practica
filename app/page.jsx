@@ -17,7 +17,7 @@ export default function onePage(){
   const [actualizacionUser, SetActualizaciones]= useState("")  
     const [index, SetIndex]= useState(null)  
 
-    const {user,SetUser}= useFetch()
+    const {user,SetUser,cargarUsuarios }= useFetch()
 
 
    const url_database=process.env.NEXT_PUBLIC_URL
@@ -140,7 +140,7 @@ export default function onePage(){
 
       { 
 
-      actualizacionUser==="update"? <FormUpdate id={index} SetUser={SetUser}/>:actualizacionUser==="delete"? <FormDelete id={index} SetUser={SetUser}/>:null
+      actualizacionUser==="update"? <FormUpdate id={index} SetUser={SetUser} recargar={cargarUsuarios}/>:actualizacionUser==="delete"? <FormDelete id={index} SetUser={SetUser}/>:null
         
       }
   

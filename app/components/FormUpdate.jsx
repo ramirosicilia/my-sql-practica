@@ -4,7 +4,7 @@
  import { useState } from "react"
 
 
-const FormUpdate = ({id,SetUser}) => {
+const FormUpdate = ({id,SetUser,recargar}) => {
 
     const [form , SetForm]= useState({
         nombre:"",
@@ -42,7 +42,7 @@ const FormUpdate = ({id,SetUser}) => {
          const data= await response.json()
 
    
-        
+          await recargar
 
         SetUser(prev=>prev.map(us=>us.id==id?{...us,[campo]:valor} : us))
 
@@ -76,7 +76,7 @@ const FormUpdate = ({id,SetUser}) => {
 
           const data=await response.json()  
 
-        
+         await recargar
 
              SetUser(prev=>prev.map(us=>us.id==id? {...us,...form}: us)) 
              

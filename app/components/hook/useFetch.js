@@ -1,34 +1,20 @@
 
-import { useState,useEffect } from "react";
-import {peticionUsuarios}from "../../data/peticion.js"
 
 
-export function useFetch(){
+import { useState, useEffect, useCallback } from "react";
+import { peticionUsuarios } from "../../data/peticion.js";
 
-    const [ user, SetUser] =useState ([]) 
+export function useFetch() {
+  const [user, SetUser] = useState([]);
 
+  const cargarUsuarios = useCallback(async () => {
+    const data = await peticionUsuarios();
+    SetUser(data);
+  }, []);
 
-    useEffect(()=>{ 
+  useEffect(() => {
+    cargarUsuarios();
+  }, [cargarUsuarios]);
 
-      async  function recibir(){ 
-
-        const data= await peticionUsuarios() 
-
-        SetUser(data)
-
-        }
-
-        recibir()
-
-
-
-    },[])
-
-    return{
-        user,
-        SetUser
-    }
-
-
-
+  return { user, SetUser, cargarUsuarios };
 }
