@@ -1,7 +1,7 @@
 
 "use client" 
 
- import { useEffect, useState } from "react"
+ import { useState } from "react"
 
 
 const FormUpdate = ({id,SetUser}) => {
@@ -19,6 +19,8 @@ const FormUpdate = ({id,SetUser}) => {
 
 
    async function actualizarPatch(campo, valor) {
+     
+    console.log(campo,"campo")
 
   try {
     const response = await fetch(`${url_database}/usuarios/${id}`, {
@@ -41,19 +43,11 @@ const FormUpdate = ({id,SetUser}) => {
       throw new Error("Error al actualizar")
     }   
 
-    
+    if(data==="cambio realizado"){ 
 
-    
-
-
-  } catch (error) {
-    console.error(error)
-  }
-} 
-
-
- useEffect(()=>{
-  console.log("ANTES DE LIMPIAR")
+      
+    // LIMPIAR
+   console.log("ANTES DE LIMPIAR")
 
       SetForm({
         nombre: "",
@@ -87,7 +81,16 @@ console.log("DESPUÉS DE LIMPIAR")
     }
      
     )
- },[SetUser,id])
+
+    }
+
+    
+
+
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 
 
