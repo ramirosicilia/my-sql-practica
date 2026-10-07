@@ -65,32 +65,29 @@ function createUser(state,action) {
 
 
 
-    async function enviarForm() {
+   async function enviarForm() {
 
-        const response= await fetch(`${url_database}/usuarios`,{
-            method:"post",
-            headers:{
-            
-                 "content-Type":"application/json"
-                
-            },
-            body:JSON.stringify(state)
-        })
+    const response = await fetch(`${url_database}/usuarios`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(state)
+    })
 
-                 dispatch({type:"cleaner"})
-            
-                  const texto = await response.text()
-            
-        console.log("STATUS:", response.status)
-        console.log("RESPUESTA:", texto)
-            
-        if (!response.ok) {
-            throw new Error(`Error ${response.status}: ${texto}`)
-        }
-        
-                
+    const texto = await response.text()
+
+    console.log("STATUS:", response.status)
+    console.log("RESPUESTA:", texto)
+
+    if (!response.ok) {
+        throw new Error(`Error ${response.status}`)
     }
 
+    dispatch({ type: "cleaner" })
+
+    return texto
+}
 
 
 
