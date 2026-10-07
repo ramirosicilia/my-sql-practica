@@ -31,12 +31,11 @@ const FormUpdate = ({id,SetUser,recargar}) => {
         campo: campo,
         valor: valor
       })
-    })
+    })  
 
-    const data = await response.json()
+    console.log("hasta aca llega")
 
-    console.log("RESPUESTA PATCH:", data)
-
+    
     if (!response.ok) {
       throw new Error("Error al actualizar")
     }
