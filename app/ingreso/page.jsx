@@ -79,7 +79,9 @@ function createUser(state,action) {
 
          dispatch({type:"cleaner"})
 
-      
+          const data= await response.json() 
+
+          return data
 
    
         
