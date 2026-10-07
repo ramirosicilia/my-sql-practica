@@ -19,6 +19,7 @@ const FormUpdate = ({id,SetUser,recargar}) => {
 
 
    async function actualizarPatch(campo, valor) {
+    console.log("hola")
 
   try {
     const response = await fetch(`${url_database}/usuarios/${id}`, {
