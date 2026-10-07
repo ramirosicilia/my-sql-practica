@@ -20,13 +20,6 @@ const FormUpdate = ({id,SetUser,recargar}) => {
 
    async function actualizarPatch(campo, valor) {
     console.log("hola")
-    SetForm({
-  nombre: "",
-  usuario: "",
-  email: "",
-  contrasena: "",
-  fechaIngreso: ""
-})
 
   try {
     const response = await fetch(`${url_database}/usuarios/${id}`, {
@@ -51,7 +44,7 @@ const FormUpdate = ({id,SetUser,recargar}) => {
     SetUser(prev =>{
       console.log(prev,"prev")
 
-       prev.map(us =>{
+        return  prev.map(us =>{
         console.log(us.id,"id")
         console.log(id,"id nuevo")
        return  us.id == id
@@ -72,7 +65,13 @@ const FormUpdate = ({id,SetUser,recargar}) => {
     // LIMPIAR
    console.log("ANTES DE LIMPIAR")
 
-
+    SetForm({
+      nombre: "",
+      usuario: "",
+      email: "",
+      contrasena: "",
+      fechaIngreso: ""
+    })
 
 console.log("DESPUÉS DE LIMPIAR")
     // Si querés recargar, ACÁ sí se ejecuta
