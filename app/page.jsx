@@ -61,7 +61,7 @@ export default function onePage(){
 
     }) 
 
-    console.log(response.json())
+  
       
       SetUser(prev=>prev.map(user=>user.id===id?{...user,habilitado:nuevoValor}:user))
     

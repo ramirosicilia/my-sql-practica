@@ -4,7 +4,7 @@
  import { useState } from "react"
 
 
-const FormUpdate = ({id,SetUser,recargar}) => {
+const FormUpdate = ({id,SetUser}) => {
 
     const [form , SetForm]= useState({
         nombre:"",
@@ -75,7 +75,7 @@ SetForm({
 
 console.log("DESPUÉS DE LIMPIAR")
     // Si querés recargar, ACÁ sí se ejecuta
-    await recargar()
+ 
 
   } catch (error) {
     console.error(error)
