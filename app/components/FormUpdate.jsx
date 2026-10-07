@@ -17,86 +17,70 @@ const FormUpdate = ({id,SetUser,recargar}) => {
   
      const url_database=process.env.NEXT_PUBLIC_URL
 
-    async function actualizarPatch(campo,valor) { 
 
-    
-    
+   async function actualizarPatch(campo, valor) {
 
-      console.log(campo)
-      console.log(valor)
-      console.log(id)
-
-      
-      const response= await fetch(`${url_database}/usuarios/${id}`,{
-        method:"PATCH",
-        headers:{
-          "content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          tipo:"campo",
-          campo:campo,
-          valor:valor
-        })
-      }) 
-
-         const data= await response.json()
-
-   
-          await recargar()
-
-        SetUser(prev=>prev.map(us=>us.id==id?{...us,[campo]:valor} : us))
-
-          SetForm({
-        nombre:"",
-        usuario:"",
-        email:"",
-        contrasena:"",
-        fechaIngreso:""
+  try {
+    const response = await fetch(`${url_database}/usuarios/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        tipo: "campo",
+        campo: campo,
+        valor: valor
+      })
     })
 
-      
- 
-      }
-    
-    
-    
+    const data = await response.json()
 
+    console.log("RESPUESTA PATCH:", data)
 
-    async function enviarFormUpdate() { 
-    
+    if (!response.ok) {
+      throw new Error("Error al actualizar")
+    }
 
+    SetUser(prev =>{
+      console.log(prev,"prev")
 
-        const response=await fetch(`${url_database}/usuarios/${id}`,{
-            method:"put",
-            headers:{
-                "content-Type":"application/json"
-            },
-            body:JSON.stringify(form)
-        })
-
-          const data=await response.json()  
-
-         await recargar()
-
-             SetUser(prev=>prev.map(us=>us.id==id? {...us,...form}: us)) 
-             
-          SetForm({
-             nombre:"",
-             usuario:"",
-             email:"",
-             contrasena:"",
-             fechaIngreso:""
-           })
-
+       prev.map(us =>{
+        console.log(us.id,"id")
+        console.log(id,"id nuevo")
+       return  us.id == id
+          ? { ...us, [campo]: valor }
+          : us
       
 
-             return data
 
-          
+       }
+       
+      )
 
-           
-        
-     }
+
+    }
+     
+    )
+
+    // LIMPIAR
+   console.log("ANTES DE LIMPIAR")
+
+SetForm({
+  nombre: "",
+  usuario: "",
+  email: "",
+  contrasena: "",
+  fechaIngreso: ""
+})
+
+console.log("DESPUÉS DE LIMPIAR")
+    // Si querés recargar, ACÁ sí se ejecuta
+    await recargar()
+
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 
 
