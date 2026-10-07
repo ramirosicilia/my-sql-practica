@@ -42,7 +42,7 @@ const FormUpdate = ({id,SetUser,recargar}) => {
          const data= await response.json()
 
    
-          await recargar
+          await recargar()
 
         SetUser(prev=>prev.map(us=>us.id==id?{...us,[campo]:valor} : us))
 
@@ -76,7 +76,7 @@ const FormUpdate = ({id,SetUser,recargar}) => {
 
           const data=await response.json()  
 
-         await recargar
+         await recargar()
 
              SetUser(prev=>prev.map(us=>us.id==id? {...us,...form}: us)) 
              
