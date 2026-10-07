@@ -79,7 +79,7 @@ function createUser(state,action) {
 
          dispatch({type:"cleaner"})
 
-        return response.json()
+      
 
    
         
