@@ -118,7 +118,5 @@ export async function PATCH(request, { params }) {
 
     await connection.end()
 
-    return NextResponse.json({
-        mensaje: "usuario actualizado"
-    })
+   
 }

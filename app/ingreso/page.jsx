@@ -4,10 +4,10 @@
 import { useReducer} from "react"
 
 
+     const url_database=process.env.NEXT_PUBLIC_URL
 
 export default function Formulario(){ 
 
-     const url_database=process.env.NEXT_PUBLIC_URL
      
     const objecto= {
         nombre:"",

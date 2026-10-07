@@ -39,9 +39,27 @@ const FormUpdate = ({id,SetUser}) => {
 
     if (!response.ok) {
       throw new Error("Error al actualizar")
-    }
+    }   
 
-    SetUser(prev =>{
+    if(data==="cambio realizado"){ 
+
+      
+    // LIMPIAR
+   console.log("ANTES DE LIMPIAR")
+
+      SetForm({
+        nombre: "",
+        usuario: "",
+        email: "",
+        contrasena: "",
+        fechaIngreso: ""
+      })
+
+console.log("DESPUÉS DE LIMPIAR")
+    // Si querés recargar, ACÁ sí se ejecuta
+ 
+
+      SetUser(prev =>{
       console.log(prev,"prev")
 
       return prev.map(us =>{
@@ -62,20 +80,10 @@ const FormUpdate = ({id,SetUser}) => {
      
     )
 
-    // LIMPIAR
-   console.log("ANTES DE LIMPIAR")
+    }
 
-SetForm({
-  nombre: "",
-  usuario: "",
-  email: "",
-  contrasena: "",
-  fechaIngreso: ""
-})
+    
 
-console.log("DESPUÉS DE LIMPIAR")
-    // Si querés recargar, ACÁ sí se ejecuta
- 
 
   } catch (error) {
     console.error(error)
