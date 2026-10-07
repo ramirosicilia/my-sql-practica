@@ -77,14 +77,18 @@ function createUser(state,action) {
             body:JSON.stringify(state)
         })
 
-         dispatch({type:"cleaner"})
-
-          const data= await response.json() 
-
-          return data
-
-   
+                 dispatch({type:"cleaner"})
+            
+                  const texto = await response.text()
+            
+        console.log("STATUS:", response.status)
+        console.log("RESPUESTA:", texto)
+            
+        if (!response.ok) {
+            throw new Error(`Error ${response.status}: ${texto}`)
+        }
         
+                
     }
 
 
