@@ -1,7 +1,7 @@
 
 "use client" 
 
- import { useState } from "react"
+ import { useEffect, useState } from "react"
 
 
 const FormUpdate = ({id,SetUser}) => {
@@ -41,11 +41,19 @@ const FormUpdate = ({id,SetUser}) => {
       throw new Error("Error al actualizar")
     }   
 
-    if(data==="cambio realizado"){ 
+    
 
-      
-    // LIMPIAR
-   console.log("ANTES DE LIMPIAR")
+    
+
+
+  } catch (error) {
+    console.error(error)
+  }
+} 
+
+
+ useEffect(()=>{
+  console.log("ANTES DE LIMPIAR")
 
       SetForm({
         nombre: "",
@@ -79,16 +87,7 @@ console.log("DESPUÉS DE LIMPIAR")
     }
      
     )
-
-    }
-
-    
-
-
-  } catch (error) {
-    console.error(error)
-  }
-}
+ },[SetUser,id])
 
 
 
