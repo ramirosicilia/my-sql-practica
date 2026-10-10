@@ -19,7 +19,7 @@ export function useFetch() {
     recibir();
 
     
-  }, []);
+  }, [user]);
 
   return { user, SetUser,};
 }
