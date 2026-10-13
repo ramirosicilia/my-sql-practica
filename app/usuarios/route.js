@@ -5,11 +5,11 @@ import mysql2 from "mysql2/promise"
 export async function GET(){
 
    const connection = await mysql2.createConnection({
-            host: process.env.DB_HOST || "localhost",
-            port: Number(process.env.DB_PORT) || 3307,
-            user: process.env.DB_USER || "root",
-            password: process.env.DB_PASSWORD || "",
-            database: process.env.DB_DATABASE || "sass-usuarios",
+            host: process.env.DB_HOST ,
+            port: Number(process.env.DB_PORT) ,
+            user: process.env.DB_USER  ,
+            password: process.env.DB_PASSWORD ,
+            database: process.env.DB_DATABASE ,
             ssl: {
               ca: process.env.DB_CA
             }
