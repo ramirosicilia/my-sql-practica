@@ -15,7 +15,45 @@ const FormUpdate = ({id,SetUser}) => {
     })   
 
   
-     const url_database=process.env.NEXT_PUBLIC_URL
+     const url_database=process.env.NEXT_PUBLIC_URL  || "http://localhost:3000"
+
+
+     async function enviarFormUpdate(){ 
+
+
+      const response= await fetch(`${url_database}/usuarios/${id}`,{
+        method:"PUT",
+        headers:{
+          "content-Type":"application/json"
+        },
+        body:JSON.stringify(form)
+
+      }) 
+
+      const data= await response.json() 
+
+
+       SetForm( 
+
+        {
+        
+        nombre:"",
+        usuario:"",
+        email:"",
+        contrasena:"",
+        fechaIngreso:""
+    }
+       )
+
+      SetUser(prev=> prev.map(us=>us.id==id?{...us,...form}:us)) 
+
+
+      return data
+
+
+     }
+
+
 
 
    async function actualizarPatch(campo, valor) {
@@ -87,9 +125,15 @@ console.log("DESPUÉS DE LIMPIAR")
     
 
 
-  } catch (error) {
+  }
+  
+  catch (error) {
     console.error(error)
   }
+
+
+
+
 }
 
 

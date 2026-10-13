@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 
 const FormDelete = ({id,SetUser}) => { 
 
-   const url_database=process.env.NEXT_PUBLIC_URL
+   const url_database=process.env.NEXT_PUBLIC_URL  || "http://localhost:3000"
 
 
 

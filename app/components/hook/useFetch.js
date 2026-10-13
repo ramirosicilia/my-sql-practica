@@ -1,7 +1,7 @@
 
 
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { peticionUsuarios } from "../../data/peticion.js";
 
 export function useFetch() {
@@ -19,7 +19,7 @@ export function useFetch() {
     recibir();
 
     
-  }, [user]);
+  }, []);
 
   return { user, SetUser,};
 }

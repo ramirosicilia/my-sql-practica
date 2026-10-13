@@ -16,11 +16,11 @@ export  async function PUT(request,{params}){
     console.log(body)
 
      const connection = await mysql2.createConnection({
-          host: process.env.DB_HOST,
-          port: Number(process.env.DB_PORT),
-          user: process.env.DB_USER,
-          password: process.env.DB_PASSWORD,
-          database: process.env.DB_DATABASE,
+          host: process.env.DB_HOST || "127.0.0.1",
+          port: Number(process.env.DB_PORT) || 3307,
+          user: process.env.DB_USER || "root",
+          password: process.env.DB_PASSWORD || "",
+          database: process.env.DB_DATABASE || "sass-usuarios",
           ssl: {
             ca: process.env.DB_CA
           }
@@ -46,19 +46,21 @@ export async function DELETE( r,{params } ){
     
    
 
-     const connection = await mysql2.createConnection({
-          host: process.env.DB_HOST,
-          port: Number(process.env.DB_PORT),
-          user: process.env.DB_USER,
-          password: process.env.DB_PASSWORD,
-          database: process.env.DB_DATABASE,
+    const connection = await mysql2.createConnection({
+          host: process.env.DB_HOST || "localhost",
+          port: Number(process.env.DB_PORT) || 3307,
+          user: process.env.DB_USER || "root",
+          password: process.env.DB_PASSWORD || "",
+          database: process.env.DB_DATABASE || "sass-usuarios",
           ssl: {
             ca: process.env.DB_CA
           }
         });
 
+
         const borrarUser= await connection.query("delete from usuarios where id=?",[id]) 
         console.log(borrarUser)
+          await connection.end()
 
         return NextResponse.json("usuario eliminado")
 
@@ -82,15 +84,15 @@ export async function PATCH(request, { params }) {
      const {campo,valor,tipo,habilitacion}= body
 
     const connection = await mysql2.createConnection({
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  ssl: {
-    ca: process.env.DB_CA
-  }
-});
+          host: process.env.DB_HOST || "localhost",
+          port: Number(process.env.DB_PORT) || 3307,
+          user: process.env.DB_USER || "root",
+          password: process.env.DB_PASSWORD || "",
+          database: process.env.DB_DATABASE || "sass-usuarios",
+          ssl: {
+            ca: process.env.DB_CA
+          }
+        });
 
     if(tipo==="campo"){
         const [patchUser]= await connection.query(`update usuarios set ${campo}=? where id=?`,[valor,id])
@@ -107,10 +109,15 @@ export async function PATCH(request, { params }) {
         console.log(habilitacion,"que llega")
          const [userHabilitacion]= await connection.query(`update usuarios set habilitado=? where id=?`,[habilitacion,id])
 
-        console.log(userHabilitacion)
+        console.log(userHabilitacion) 
+
+  
+            
+      await connection.end() 
+
+         return NextResponse.json("cambio realizado")
 
 
-      await connection.end()
     }
 
     
